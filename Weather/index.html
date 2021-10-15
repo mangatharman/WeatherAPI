@@ -1,0 +1,75 @@
+<!--SODV1201: Assignment 2
+    Name: Harman Mangat
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <title>Weather App</title>
+</head>
+<body>
+    <div class = "container">
+        <div class = "title">
+            <p>Weather Calgary</p>
+        </div>
+        <div class = "weather">
+            <p>Click on the button to get the temperature of Calgary</p>
+            <div class = "tempValue">
+                <p>- * <span>C</span></p>
+            </div>
+            <div class = "tempDescription">
+                <p>-</p>
+            </div>
+        </div>
+        <button onclick="getWeather()" class = "center">Click Here</button>
+    </div>
+    <script>
+        //Creating Elements
+        const tempElement = document.querySelector(".tempValue p"); //Temperature Element
+        const descriptionElement = document.querySelector(".tempDescription p"); //Description Element
+
+        const weather = {}; 
+
+        weather.temperature = {
+            unit : "celsius"
+        }
+
+        //For conversion as the default temperature is in kelvin
+        const kelvin = 273;
+
+        //Api Key
+        const key = "6e1d9db660818f2b1fc19f2612c14577"; 
+
+        //Function to get the weather
+        function getWeather() {
+            let api = `http://api.openweathermap.org/data/2.5/weather?q=calgary&appid=${key}`;
+            //console.log(api);
+            
+            //Fetching the data from the api
+            fetch(api)
+                .then(function(response) {
+                    let data = response.json();
+                    return data;
+                })
+                .then(function(data) {
+                    weather.temperature.value = Math.floor(data.main.temp - kelvin);
+                    weather.description = data.weather[0].description;
+                })
+                .then(function() { //Calling a function to display the weather after getting the data
+                    displayWeather();
+                });
+        }
+
+        //Function to display the weather
+        function displayWeather() {
+            tempElement.innerHTML = `${weather.temperature.value} * <span>C</span>`;
+            descriptionElement.innerHTML = weather.description;
+        }
+    </script>
+</body>
+</html>

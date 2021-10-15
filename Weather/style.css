@@ -1,0 +1,74 @@
+/*SODV1201: Assignment 2
+    Name: Harman Mangat
+*/
+
+body, html {
+    background-color: #295144;
+}
+
+.container{
+    width: 320px;    
+    background-color: #FFF;
+    display: block;
+    margin: 5% auto;
+    border-radius: 10px;
+    padding-bottom : 50px;
+    align-items: center;
+}
+
+.title{
+    width: 300px;
+    height: 50px;
+    border-radius: 10px 10px 0 0;
+}
+
+.title p{
+    text-align: center;
+    padding: 15px;
+    margin: 0 auto;
+    font-size: 1.2em;
+    color: black;
+}
+
+.tempValue{
+    width: 300px;
+    height:60px;
+}
+
+.tempValue p{
+    padding: 0;
+    margin: 0;
+    color: black;
+    font-size: 3em;
+    text-align: center;
+}
+
+.tempValue span{
+    color: black;
+    font-size: 0.5em;
+}
+
+.tempDescription p{
+    padding: 8px;
+    margin: 0;
+    color: black;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.weather p {
+    text-align: center;
+}
+
+.center {
+    margin-left: 40%;
+    margin-top: 5%;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #295144;
+    color: white;
+}
+
+    
